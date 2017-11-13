@@ -1,0 +1,37 @@
+<html>
+
+<body>
+	<p>Send from from method POST</p>
+	<form action="/index.php" method="POST">
+		First name: <input type="text" name="fname"><br>
+		Last name: <input type="text" name="lname"><br>
+        <input type="submit" value="Submit">
+	</form>
+
+	<p>Send from from method GET</p>
+	<form action="/index.php" method="GET">
+		First name: <input type="text" name="fname"><br>
+		Last name: <input type="text" name="lname"><br>
+        <input type="submit" value="Submit">
+	</form>
+
+	<p>Send from from method PUT</p>
+	<form action="/index.php" method="post">
+		First name: <input type="text" name="fname"><br>
+		Last name: <input type="text" name="lname"><br>
+		<input type="hidden" name="_method" value="put" />
+        <input type="submit" value="Submit">
+	</form>
+
+
+	<p>Send from from method DELETE</p>
+	<form action="/index.php" method="post">
+		First name: <input type="text" name="fname"><br>
+		Last name: <input type="text" name="lname"><br>
+		<input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="Submit">
+	</form>
+	
+</body>
+
+</html>

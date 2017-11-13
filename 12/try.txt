@@ -1,0 +1,72 @@
+<?php
+function inverse($x) {
+    if (!$x) {
+        throw new Exception('Деление на ноль.');
+    }
+    return 1/$x;
+}
+
+try {
+    echo inverse(5) . "\n";
+    echo inverse(0) . "\n";
+} catch (Exception $e) {
+    echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+}
+
+// Продолжение выполнения
+echo "Hello World\n";
+?>
+-----------------------------------
+<?php
+function inverse($x) {
+    if (!$x) {
+        throw new Exception('Деление на ноль.');
+    }
+    return 1/$x;
+}
+
+try {
+    echo inverse(5) . "\n";
+} catch (Exception $e) {
+    echo 'Поймано исключение: ',  $e->getMessage(), "\n";
+} finally {
+    echo "Первое finally.\n";
+}
+
+try {
+    echo inverse(0) . "\n";
+} catch (Exception $e) {
+    echo 'Поймано исключение: ',  $e->getMessage(), "\n";
+} finally {
+    echo "Второе finally.\n";
+}
+
+// Продолжение нормального выполнения
+echo "Hello World\n";
+?>
+----------------------------------
+Пример #5 Вложенные исключения
+
+<?php
+
+class MyException extends Exception { }
+
+class Test {
+    public function testing() {
+        try {
+            try {
+                throw new MyException('foo!');
+            } catch (MyException $e) {
+                // повторный выброс исключения
+                throw $e;
+            }
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+        }
+    }
+}
+
+$foo = new Test;
+$foo->testing();
+
+?>

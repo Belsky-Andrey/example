@@ -1,0 +1,17 @@
+﻿1) В php.ini подключаем расширение и устанавливаем параметры
+zend_extension="%путь до php%/ext/php_xdebug.dll"
+;эта опция как раз и отвечает за автостарт
+xdebug.remote_autostart=on
+xdebug.remote_enable=on
+xdebug.remote_handler="dbgp"
+xdebug.remote_host="localhost"
+;порт может быть и 9000, но у openserver он зарезервирован под php
+xdebug.remote_port=9001
+xdebug.remote_mode=req
+;ключ IDE (может быть любым) понадобится позже
+xdebug.idekey="PHPSTORM"
+
+2) Настраиваем интерпретатор
+3) Добавляете сервер
+4) Настраиваем XDebug секцию
+5) Прописуем IDE key + Host

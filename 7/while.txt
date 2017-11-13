@@ -1,0 +1,50 @@
+$i = 1;
+while ($i <= 10) {
+    echo $i++;  
+}
+
+$i = 0;
+do {
+    echo $i;
+} while ($i > 0);
+
+$x=0;
+while ($x++<10) echo $x;
+// Выводит 12345678910
+?>
+//---------------------------------
+
+for ($i = 1; $i <= 10; $i++) {
+    echo $i;
+}
+
+for ($i = 1; ; $i++) {
+    if ($i > 10) {
+        break;
+    }
+    echo $i;
+}
+
+$i = 1;
+for (; ; ) {
+    if ($i > 10) {
+        break;
+    }
+    echo $i;
+    $i++;
+}
+
+?>
+//----------------------------------
+$t1 = microtime(true);
+$a=0;
+while($a++ <= 1000000000);
+$t2 = microtime(true);
+$x1 = $t2 - $t1;
+echo PHP_EOL,' > while($a++ <= 100000000); : ' ,$x1, 's', PHP_EOL;
+
+$t5 = microtime(true);
+$a=0; for(;$a++ <= 1000000000;);
+$t6 = microtime(true);
+$x3 = $t6 - $t5;
+echo PHP_EOL,' > $a=0; for(;$a++ <= 100000000;); : ' , $x3, 's', PHP_EOL;

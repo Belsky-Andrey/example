@@ -1,0 +1,24 @@
+<?php
+$greet = function($name)
+{
+    printf("Hello %s\r\n", $name);
+};
+
+$greet('World');
+$greet('PHP');
+?>
+//--------------------------
+<?php
+$message = 'hello';
+
+// Без "use"
+$example = function () {
+    var_dump($message);
+};
+$example();
+
+// Наследуем $message
+$example = function () use ($message) {
+    var_dump($message);
+};
+$example();

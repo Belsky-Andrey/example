@@ -1,0 +1,54 @@
+<?php
+namespace Foo;
+class Bar {
+    public function Bar() {
+        // конструктор в версиях PHP 5.3.0-5.3.2
+        // обычный метод, начиная с версии PHP 5.3.3
+    }
+}
+?>
+----------------------------
+<?php
+class BaseClass {
+   function __construct() {
+       print "Конструктор класса BaseClass\n";
+   }
+}
+
+class SubClass extends BaseClass {
+   function __construct() {
+       parent::__construct();
+       print "Конструктор класса SubClass\n";
+   }
+}
+
+class OtherSubClass extends BaseClass {
+    // наследует конструктор BaseClass
+}
+
+// Конструктор класса BaseClass
+$obj = new BaseClass();
+
+// Конструктор класса BaseClass
+// Конструктор класса SubClass
+$obj = new SubClass();
+
+// Конструктор класса BaseClass
+$obj = new OtherSubClass();
+?>
+
+-------------------------------------
+<?php
+class MyDestructableClass {
+   function __construct() {
+       print "Конструктор\n";
+       $this->name = "MyDestructableClass";
+   }
+
+   function __destruct() {
+       print "Уничтожается " . $this->name . "\n";
+   }
+}
+
+$obj = new MyDestructableClass();
+?>

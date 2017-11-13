@@ -1,0 +1,128 @@
+<?php
+abstract class AbstractClass
+{
+   /* Данный метод должен быть определён в дочернем классе */
+    abstract protected function getValue();
+    abstract protected function prefixValue($prefix);
+
+   /* Общий метод */
+    public function printOut() {
+        print $this->getValue() . "\n";
+    }
+}
+
+class ConcreteClass1 extends AbstractClass
+{
+    protected function getValue() {
+        return "ConcreteClass1";
+    }
+
+    public function prefixValue($prefix) {
+        return "{$prefix}ConcreteClass1";
+    }
+}
+
+class ConcreteClass2 extends AbstractClass
+{
+    public function getValue() {
+        return "ConcreteClass2";
+    }
+
+    public function prefixValue($prefix) {
+        return "{$prefix}ConcreteClass2";
+    }
+}
+
+$class1 = new ConcreteClass1;
+$class1->printOut();
+echo $class1->prefixValue('FOO_') ."\n";
+
+$class2 = new ConcreteClass2;
+$class2->printOut();
+echo $class2->prefixValue('FOO_') ."\n";
+?>
+---------------------------
+<?php
+abstract class AbstractClass
+{
+    // Наш абстрактный метод должен определять только необходимые аргументы
+    abstract protected function prefixName($name);
+
+}
+
+class ConcreteClass extends AbstractClass
+{
+
+    // Наш дочерний класс может также определять необязательные аргументы, не указанные в сигнатуре родительского метода
+    public function prefixName($name, $separator = ".") {
+        if ($name == "Pacman") {
+            $prefix = "Mr";
+        } elseif ($name == "Pacwoman") {
+            $prefix = "Mrs";
+        } else {
+            $prefix = "";
+        }
+        return "{$prefix}{$separator} {$name}";
+    }
+}
+
+$class = new ConcreteClass;
+echo $class->prefixName("Pacman"), "\n";
+echo $class->prefixName("Pacwoman"), "\n";
+?>
+-----------------------------
+
+<?php 
+class Fruit { 
+    private $color; 
+    
+    public function eat() { 
+        //chew 
+    } 
+    
+    public function setColor($c) { 
+        $this->color = $c; 
+    } 
+} 
+
+class Apple extends Fruit { 
+    public function eat() { 
+        //chew until core 
+    } 
+} 
+
+class Orange extends Fruit { 
+    public function eat() { 
+        //peel 
+        //chew 
+    } 
+} 
+?> 
+
+Now I give you an apple and you eat it. 
+
+<?php 
+$apple = new Apple(); 
+$apple->eat(); 
+?> 
+
+What does it taste like? It tastes like an apple. Now I give you a fruit. 
+
+<?php 
+$fruit = new Fruit(); 
+$fruit->eat(); 
+?> 
+
+What does that taste like??? Well, it doesn't make much sense, so you shouldn't be able to do that. This is accomplished by making the Fruit class abstract as well as the eat method inside of it. 
+
+<?php 
+abstract class Fruit { 
+    private $color; 
+    
+    abstract public function eat(); 
+    
+    public function setColor($c) { 
+        $this->color = $c; 
+    } 
+} 
+?> 

@@ -1,0 +1,64 @@
+<?php
+    echo 'Hello world!<br>';
+    echo ("Это мой первый документ!<br>");
+    print 'Goodbye';
+?>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Основы PHP</title>
+</head>
+
+<body>
+<?php
+     include 'add.php';
+?>
+</body>
+</html
+// ---------------------------
+<?php
+require('somefile.php');
+?>
+
+Файл header.html:
+<html>
+<head><title>It is a title</title></head>
+<body bgcolor=green>
+Файл footer.html:
+&copy; Home Company, 2005.
+</body></html>
+Файл script.php
+<?php
+require "header.htm";
+// Сценарий выводит само тело документа
+require "footer.htm";
+?>
+// ------------------------------
+//Конструкция require позволяет включать удаленные файлы, если такая возможность включена в конфигурационном файле PHP.
+<?php
+// Следующий пример на работает, поскольку пытается включить локальный файл
+require 'file.php?foo=1&bar=2';
+// Следующий пример работает
+require 'http://www.example.com/file.php?foo=1&bar=2';
+?>
+//---------------------------------
+// В отличие от конструкции require конструкция include позволяет включать файлы в код PHP скрипта во время выполнения сценария. 
+// Синтаксис конструкции include выглядит следующим образом:
+// Если мы поставим теперь вместо include require, то сценарий сгенерирует критическую ошибку (fatal error). 
+<?php
+// Создаем цикл, в теле которого конструкция include
+for($i=1; $i<=10; $i++) {
+	include "$i.txt";
+}
+// Включили десять файлов: 1.txt, 2.txt, 3.txt ... 10.txt
+// Результат - вывод 12345678910
+?>
+//---------------------------------------
+<?php
+// Следующий пример на работает, поскольку пытается включить локальный файл
+include 'file.php?foo=1&bar=2';
+// Следующий пример работает
+include 'http://www.example.com/file.php?foo=1&bar=2';
+?>

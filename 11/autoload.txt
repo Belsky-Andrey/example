@@ -1,0 +1,55 @@
+<?php
+spl_autoload_register(function ($class_name) {
+    include $class_name . '.php';
+});
+
+$obj  = new MyClass1();
+$obj2 = new MyClass2(); 
+?>
+---------------------------
+include "class/class.Foo.php";
+include "class/class.AB.php";
+include "class/class.XZ.php";
+include "class/class.YZ.php";
+
+$foo = new Foo;
+$ab = new AB;
+$xz = new XZ;
+$yz = new YZ;
+---------------------------
+
+function __autoload($class) {
+   $class_name = strtolower($class);
+   $path       = "{$class_name}.php";
+   if (file_exists($path)) {
+       require_once($path);
+   } else {
+       die("The file {$class_name}.php could not be found!");
+	}
+}
+
+$foo = new Foo;
+$ab = new AB;
+$xz = new XZ;
+$yz = new YZ;
+
+----------------------------
+
+  <?php
+
+    // function __autoload($class) {
+    //     include 'classes/' . $class . '.class.php';
+    // }
+
+    function my_autoloader($class) {
+        include 'classes/' . $class . '.class.php';
+    }
+
+    spl_autoload_register('my_autoloader');
+
+    // Or, using an anonymous function as of PHP 5.3.0
+    spl_autoload_register(function ($class) {
+        include 'classes/' . $class . '.class.php';
+    });
+
+    ?>

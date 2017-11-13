@@ -1,0 +1,8 @@
+<?php
+$text    = '"Roma"';
+$message = trim(htmlspecialchars(html_entity_decode($text, ENT_QUOTES)));
+?>
+
+<form id="form-action" action="work.php">
+    <input class="form-input" name="answer" value="my name is <?= $message?>">
+</form>
